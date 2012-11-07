@@ -26,7 +26,7 @@
 -module(gen_smtp_server).
 -behaviour(gen_server).
 
--define(PORT, 2525).
+-define(PORT, 25).
 
 %% External API
 -export([start_link/3, start_link/2, start_link/1,

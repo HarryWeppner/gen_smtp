@@ -1,9 +1,8 @@
 %% @doc A simple example callback module for `gen_smtp_server_session' that also serves as
 %% documentation for the required callback API.
 
--module(smtp_server_example).
--behaviour(gen_smtp_server_session).
-
+-module(mailshepherd_smtp_server).
+-behavior(gen_smtp_server_session).
 
 -export([init/4, handle_HELO/2, handle_EHLO/3, handle_MAIL/2, handle_MAIL_extension/2,
 	handle_RCPT/2, handle_RCPT_extension/2, handle_DATA/4, handle_RSET/1, handle_VRFY/2,
@@ -35,7 +34,7 @@ init(Hostname, SessionCount, Address, Options) ->
 	io:format("peer: ~p~n", [Address]),
 	case SessionCount > 20 of
 		false ->
-			Banner = [Hostname, " ESMTP smtp_server_example"],
+			Banner = [Hostname, " ESMTP mailshepherd.com"],
 			State = #state{options = Options},
 			{ok, Banner, State};
 		true ->
